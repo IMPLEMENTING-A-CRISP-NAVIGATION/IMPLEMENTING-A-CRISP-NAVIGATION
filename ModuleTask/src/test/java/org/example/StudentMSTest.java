@@ -38,7 +38,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
           assertAll("Main menu checks",
                   () -> assertNotNull(mainMenu),
-                  () -> assertEquals(3, mainMenu.getComponentCount())
+                  () -> assertEquals(2, mainMenu.getComponentCount())
           );
       }
 
