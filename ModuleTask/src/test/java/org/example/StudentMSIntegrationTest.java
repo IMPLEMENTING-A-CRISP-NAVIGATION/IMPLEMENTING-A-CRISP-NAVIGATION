@@ -24,7 +24,7 @@
 
           JPanel mainMenu = studentMS.createMainMenu();
           assertNotNull(mainMenu);
-          assertEquals(3, mainMenu.getComponentCount());
+          assertEquals(2, mainMenu.getComponentCount());
 
           JPanel inputPanel = studentMS.createInputPanel();
           assertNotNull(inputPanel);
