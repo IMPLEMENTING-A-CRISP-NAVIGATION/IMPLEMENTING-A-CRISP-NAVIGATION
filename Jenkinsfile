@@ -6,13 +6,13 @@ pipeline {
 
     environment {
         SONAR_HOST_URL = 'http://localhost:9000'
-        SONAR_AUTH_TOKEN = credentials('sonarqube')
+        SONAR_AUTH_TOKEN = credentials('last')
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/IMPLEMENTING-A-CRISP-NAVIGATION/IMPLEMENTING-A-CRISP-NAVIGATION.git'
+                git branch: 'master', url: 'https://github.com/IMPLEMENTING-A-CRISP-NAVIGATION/IMPLEMENTING-A-CRISP-NAVIGATION.git'
             }
         }
 
