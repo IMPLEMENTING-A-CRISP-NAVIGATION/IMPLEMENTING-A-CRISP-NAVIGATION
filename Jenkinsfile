@@ -18,7 +18,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn compile'
+                sh 'mvn clean compile'
             }
         }
 
@@ -28,14 +28,23 @@ pipeline {
             }
         }
 
+        stage('Code Coverage') {
+            steps {
+                sh 'mvn verify'
+            }
+        }
+
         stage('SonarQube Analysis') {
             steps {
-                sh """
-                mvn sonar:sonar \
-                -Dsonar.projectKey=sample_project \
-                -Dsonar.host.url=$SONAR_HOST_URL \
-                -Dsonar.login=$SONAR_AUTH_TOKEN
-                """
+                withSonarQubeEnv('SonarQube') {
+                    sh """
+                    mvn sonar:sonar \
+                    -Dsonar.projectKey=sample_project \
+                    -Dsonar.host.url=$SONAR_HOST_URL \
+                    -Dsonar.login=$SONAR_AUTH_TOKEN \
+                    -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+                    """
+                }
             }
         }
     }
