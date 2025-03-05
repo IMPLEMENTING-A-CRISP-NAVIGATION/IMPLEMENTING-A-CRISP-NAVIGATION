@@ -77,19 +77,49 @@
                 <version>0.8.10</version> <!-- Use the latest stable version -->
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
                         <id>report</id>
-                        <phase>test</phase>
+                        <phase>verify</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/jacoco</outputDirectory>
+                    <dataFile>${project.build.directory}/jacoco.exec</dataFile>
+                    <reportsDirectory>${project.build.directory}/site/jacoco</reportsDirectory>
+                </configuration>
+            </plugin>
+
+            <!-- SonarQube Plugin for Static Code Analysis -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.10</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>xml</report> <!-- Ensures XML report for SonarQube -->
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
