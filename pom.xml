@@ -3,17 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!-- Required: modelVersion, groupId, artifactId, version -->
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId> <!-- Your group's ID -->
-    <artifactId>Task6</artifactId> <!-- Your project/artifact's ID -->
-    <version>1.0-SNAPSHOT</version> <!-- Your version -->
+    <groupId>org.example</groupId>
+    <artifactId>Task6</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
-    <packaging>pom</packaging> <!-- Packaging type for parent POM -->
+    <packaging>pom</packaging>
 
     <modules>
-        <module>ModuleTask</module> <!-- Your child module -->
+        <module>ModuleTask</module>
     </modules>
 
     <properties>
@@ -21,8 +20,8 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- SonarQube configuration -->
-        <sonar.coverage.jacoco.xmlReportPaths>target/jacoco-report/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <!-- SonarQube Configuration -->
+        <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/jacoco-report/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <build>
@@ -42,7 +41,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
+                <version>3.1.2</version>
             </plugin>
 
             <!-- SonarQube Plugin -->
@@ -59,22 +58,16 @@
                 <version>0.8.10</version>
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
                         <id>report</id>
-                        <phase>verify</phase>
+                        <phase>test</phase>
                         <goals>
                             <goal>report</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report-aggregate</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report-aggregate</goal>
                         </goals>
                     </execution>
                 </executions>
