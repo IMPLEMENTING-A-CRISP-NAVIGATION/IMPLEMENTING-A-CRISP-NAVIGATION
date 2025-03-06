@@ -7,18 +7,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
   class StudentMSTest {
-      @Test
-      void MainFrame() {
+       @Test
+      void testMainFrame() {
           StudentMS studentMS = new StudentMS();
           studentMS.mainFrame();
-          JFrame frame = studentMS.frame;
-          assertAll("Main Frame",
-                  () -> assertNotNull(frame),
-                  () -> assertEquals("STUDENT MS", frame.getTitle()),
-                  () -> assertEquals(450, frame.getWidth()),
-                  () -> assertEquals(600, frame.getHeight())
-          );
+          assertNotNull(studentMS.frame);
 
+          assertAll("Main Frame",
+                  () -> assertEquals("STUDENT MS", studentMS.frame.getTitle()),
+                  () -> assertEquals(450, studentMS.frame.getWidth()),
+                  () -> assertEquals(600, studentMS.frame.getHeight())
+          );
       }
 
       @Test
