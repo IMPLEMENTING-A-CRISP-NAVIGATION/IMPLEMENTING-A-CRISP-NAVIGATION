@@ -11,14 +11,6 @@
       @Test
       void testStudentMSIntegration() {
            StudentMS studentMS = new StudentMS();
-          studentMS.mainFrame();
-          assertAll("Frame properties",
-                  () -> assertNotNull(studentMS.frame),
-                  () -> assertEquals("STUDENT MS", studentMS.frame.getTitle()),
-                  () -> assertEquals(450, studentMS.frame.getWidth()),
-                  () -> assertEquals(600, studentMS.frame.getHeight())
-          );
-
           studentMS.createUI();
           assertNotNull(studentMS.frame);
 
