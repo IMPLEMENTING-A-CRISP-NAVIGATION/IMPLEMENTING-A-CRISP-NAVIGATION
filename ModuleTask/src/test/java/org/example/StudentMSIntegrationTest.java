@@ -10,8 +10,8 @@
 
       @Test
       void testStudentMSIntegration() {
-          StudentMS studentMS = new StudentMS();
-
+           StudentMS studentMS = new StudentMS();
+          studentMS.mainFrame();
           assertAll("Frame properties",
                   () -> assertNotNull(studentMS.frame),
                   () -> assertEquals("STUDENT MS", studentMS.frame.getTitle()),
