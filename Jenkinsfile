@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'DifferentTests' }
     tools {
         maven 'maven3'
     }
